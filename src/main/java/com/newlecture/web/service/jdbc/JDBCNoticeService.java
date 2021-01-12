@@ -73,7 +73,6 @@ public class JDBCNoticeService implements NoticeService {
 		    
 		}
 
-		
 		rs.close();
 		st.close();
 		con.close();
