@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller("adminNoticeController")
@@ -22,12 +23,18 @@ public class NoticeController {	// <bean name="adminNoticeController" class="com
 	@RequestMapping("list")
 	public String list() {
 		
-		return "";
+		return "admin.board.notice.list";
 	}
 	
-	@RequestMapping("reg")
-	@ResponseBody
+	@GetMapping("reg")
+	public String reg() {
+	
+		return "admin.board.notice.reg";
+	}
+	
+	@PostMapping("reg")
 	public String reg(String title, String content, MultipartFile[] files, String category, String[] foods, String food, HttpServletRequest request) throws IllegalStateException, IOException {
+				
 		
 		for(MultipartFile file : files) {
 			String fileName = file.getOriginalFilename();
@@ -52,13 +59,14 @@ public class NoticeController {	// <bean name="adminNoticeController" class="com
 		for(String f : foods)
 			System.out.println(f);
 		
-		return String.format("title:%s<br>content:%s<br>category:%s<br>food:%s", title, content, category, food);
+		return "admin.board.notice.reg";
+		//return String.format("title:%s<br>content:%s<br>category:%s<br>food:%s", title, content, category, food);
 	}
 	
 	@RequestMapping("edit")
 	public String edit() {
 		
-		return "";
+		return "admin.board.notice.edit";
 	}
 	
 	@RequestMapping("del")
