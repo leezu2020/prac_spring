@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
 	@RequestMapping("index")
-	@ResponseBody
 	public String index() {
 		//view 정보 전달
-		return "Hello Index";
+		//return "Hello Index";
 		// root.index로 tiles에서 resolving이 가능
-		//return "root.index";
+		return "root.index";
 	}
 	
 	
